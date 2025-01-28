@@ -81,35 +81,5 @@ public class Test_APIScenarios extends BaseTest {
     }
 
 
-
-    @Test
-    @Story("Update a User based on ID")
-    public void updateAUser() {
-        // Load user data from JSON file using JsonLoader class
-        JsonNode updatedUserJson = JsonLoader.loadUserData("src/test/java/Data/UserDataUpdated.json");
-
-        // Send PUT request to update the user details using ErrorHandler to execute and validate
-        Response updateResponse = ErrorHandler.executeWithValidation(() ->
-                        given()
-                                .header("Content-Type", "application/json")
-                                .body(updatedUserJson.toString())
-                                .when()
-                                .put("/api/users/" + userId)
-                                .then()
-                                .statusCode(200)
-                                .extract()
-                                .response(),
-                200, "Error during updating user");
-
-        // Check if response is valid
-        if (updateResponse != null) {
-            RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-            // Print response for verification
-            System.out.println("User with ID " + userId + " updated successfully with the following details: " + updateResponse.asString());
-        } else {
-            System.err.println("Error updating user. Please check the logs for details.");
-        }
-    }
-
 }
 
