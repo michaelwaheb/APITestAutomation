@@ -6,6 +6,7 @@ import java.util.Properties;
 
 public class ConfigLoader
 {
+    // Load properties file
     private static Properties properties = new Properties();
 
     static {
@@ -16,7 +17,7 @@ public class ConfigLoader
             e.printStackTrace();
         }
     }
-
+   // Get the base URL from the properties file
     public static String getBaseUrl() {
         return properties.getProperty("base.url");
     }

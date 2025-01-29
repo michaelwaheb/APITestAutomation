@@ -1,6 +1,8 @@
 package utils;
 
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 
 public class ErrorHandler {
 
@@ -15,26 +17,30 @@ public class ErrorHandler {
         Response response = null;
 
         try {
-            // Execute the API call
+            // Enable logging of request and response if validation fails
+            RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+
+            // Execute the API call and get the response
             response = apiCall.call();
 
-            // Validate the status code
-            if (response.statusCode() != expectedStatusCode) {
-                System.err.println(errorMessage + " - Expected status: " + expectedStatusCode + ", but got: " + response.statusCode());
-                return null;
-            }
+            // Assertion: Check if the response is null
+            Assert.assertNotNull(response, errorMessage + " - Response is null.");
 
-            // Additional response validation (if needed)
-            if (response.getBody().asString().isEmpty()) {
-                System.err.println(errorMessage + " - Response body is empty.");
-                return null;
-            }
+            // Assertion: Validate the status code
+            Assert.assertEquals(response.statusCode(), expectedStatusCode,
+                    errorMessage + " - Expected status: " + expectedStatusCode + ", but got: " + response.statusCode());
+
+            // Assertion: Ensure that the response body is not empty
+            Assert.assertFalse(response.getBody().asString().isEmpty(),
+                    errorMessage + " - Response body is empty.");
 
         } catch (Exception e) {
             System.err.println(errorMessage + " - Exception: " + e.getMessage());
+            // Optionally fail the test here in case of an exception
+            Assert.fail(errorMessage + " - Exception: " + e.getMessage());
         }
 
         return response;
-    }
+        }
 }
 
