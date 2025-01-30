@@ -1,87 +1,60 @@
-# API Testing Framework
+# API Test Automation Project
 
-This project provides a robust and modular framework for API testing using **RestAssured**, **TestNG**, and Java. The framework includes error handling, reusable utilities, and a clear test structure to simplify API testing.
+## Overview
+This project is an API test automation framework built using **Java, TestNG, and Rest Assured**. It is designed to validate API responses, handle errors, and generate test reports efficiently.
 
 ## Features
+- API request and response validation
+- Error handling for 4xx and 5xx responses
+- Test execution with TestNG
+- Allure reporting for detailed test reports
+- Modular design for easy maintenance
 
-- **API Error Handling**: Centralized error handler for validating API responses.
-- **TestNG Integration**: Enables efficient and organized test execution.
-- **JSON Data Management**: Easily load and validate data from JSON files.
-- **Logging and Reporting**: Includes utilities for logging API requests and responses.
+## Technologies Used
+- **Java** (JDK 11 or higher)
+- **TestNG** (Test framework)
+- **Rest Assured** (API testing library)
+- **Maven** (Dependency management)
+- **Allure** (Reporting tool)
 
----
+## Installation & Setup
+### Prerequisites:
+- Install **Java** (JDK 11+)
+- Install **Maven**
+- Install **Allure** (for reporting)
 
-## Prerequisites
+### Installing Allure on PC:
+For Windows:
+```sh
+scoop install allure
+```
+For macOS:
+```sh
+brew install allure
+```
+For Linux:
+```sh
+sudo apt-add-repository ppa:qameta/allure
+sudo apt update
+sudo apt install allure
+```
 
-### Software Requirements
+### Clone the Repository:
+```sh
+git clone https://github.com/michaelwaheb/APITestAutomation.git
+cd APITestAutomation
+```
 
-1. **Java Development Kit (JDK)**: Version 8 or later.
-2. **Maven**: For managing dependencies and running the tests.
-3. **IDE**: IntelliJ IDEA, Eclipse, or any Java-supported IDE.
-4. **Git**: To clone the repository.
-
-### Dependencies
-The project uses the following libraries:
-
-- **RestAssured**: For API interactions.
-- **TestNG**: For test execution.
-- **Jackson**: For JSON data processing.
-
-All dependencies are managed via Maven.
-
----
-
-## Installation
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/michaelwaheb/API_Automation.git
-   cd API_Automation
-   ```
-
-2. **Open in IDE**:
-   - Import the project as a Maven project in your IDE.
-
-3. **Install Dependencies**:
-   - Maven will automatically resolve the dependencies when you load the `pom.xml` file. To force download:
-     ```bash
-     mvn clean install
-     ```
-
----
-
-## Configuration
-
-1. **API Base URL**:
-   - Update the base URL in the `BaseTest` class or configuration file (src/main/java/config/Staging.properties).
-   ```properties
-   base.url=https://reqres.in/
-   ```
-
-2. **JSON Data**:
-   - Add test data files under `src/test/java/Data/`.
-
-
----
+### Install Dependencies:
+```sh
+mvn clean install
+```
 
 ## Running the Tests
+To execute the tests, run the following command:
+```sh
+mvn test
+```
 
-1. **From IDE**:
-   - Right-click on the test class or package and select `Run`.
-
-2. **From Command Line**:
-   ```bash
-   mvn clean test
-   ```
-
----
-
-## Key Classes
-
-1. **ErrorHandler**: Centralized class to handle API errors and response validations.
-2. **BaseTest**: Sets up the environment for all tests.
-3. **Utils**: Provides reusable methods for printing responses and managing common tasks.
-
----
-
-
+## Generating Reports
+Test reports are automatically generated and accessible directly from the project.
