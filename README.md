@@ -4,25 +4,26 @@
 This project is an API test automation framework built using **Java, TestNG, and Rest Assured**. It is designed to validate API responses, handle errors, and generate test reports efficiently.
 
 ## Features
-- API request and response validation
-- Error handling for 4xx and 5xx responses
-- Test execution with TestNG
-- Allure reporting for detailed test reports
-- Modular design for easy maintenance
+- **Rest Assured**: For automating API
+- **TestNG**: A testing framework to run tests and manage test configurations.
+- **Error handling**: a mechanism for better exception and assertion management
+- **Allure Reports** for generating detailed and accessible test reports
 
-## Technologies Used
+## Prerequisites
 - **Java** (JDK 11 or higher)
 - **TestNG** (Test framework)
 - **Rest Assured** (API testing library)
 - **Maven** (Dependency management)
 - **Allure** (Reporting tool)
+-  **IDE** (e.g., IntelliJ IDEA, Eclipse)
 
-## Installation & Setup
-### Prerequisites:
-- Install **Java** (JDK 11+)
-- Install **Maven**
-- Install **Allure** (for reporting)
+### Dependencies
+The project uses the following libraries:
 
+- **RestAssured**: For API automation.
+- **TestNG**: For test execution.
+- **Allure**: For test reporting.
+  
 ### Installing Allure on PC:
 For Windows:
 ```sh
@@ -39,22 +40,32 @@ sudo apt update
 sudo apt install allure
 ```
 
-### Clone the Repository:
+## Setup Instructions
+
+1- Clone the Repository:
 ```sh
 git clone https://github.com/michaelwaheb/APITestAutomation.git
 cd APITestAutomation
 ```
-
-### Install Dependencies:
+2- Navigate to the project directory:
+```bash
+   cd APITestAutomation
+```
+3-Install Dependencies:
 ```sh
 mvn clean install
 ```
 
 ## Running the Tests
-To execute the tests, run the following command:
-```sh
+
+To run the tests using Maven:
+```bash
 mvn test
 ```
 
-## Generating Reports
-Test reports are automatically generated and accessible directly from the project.
+## Generating and Accessing Allure Reports
+
+The project is configured to automatically generate Allure reports after running the tests. You don't need to manually run any additional commands for report generation. Once the tests are executed using Maven, the Allure report is available within the project directory.
+
+To view the generated report, simply run the following command:
+
