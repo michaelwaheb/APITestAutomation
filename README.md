@@ -23,6 +23,7 @@ The project uses the following libraries:
 - **RestAssured**: For API automation.
 - **TestNG**: For test execution.
 - **Allure**: For test reporting.
+All dependencies are managed via Maven.
   
 ### Installing Allure on PC:
 For Windows:
@@ -42,15 +43,15 @@ sudo apt install allure
 
 ## Setup Instructions
 
+
 1- Clone the Repository:
 ```sh
 git clone https://github.com/michaelwaheb/APITestAutomation.git
 cd APITestAutomation
 ```
-2- Navigate to the project directory:
-```bash
-   cd APITestAutomation
-```
+2. Open in IDE:
+   - Import the project as a Maven project in your IDE.
+
 3-Install Dependencies:
 ```sh
 mvn clean install
