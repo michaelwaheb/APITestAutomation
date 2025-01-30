@@ -8,7 +8,7 @@ This project is an API test automation framework built using **Java, TestNG, and
 - **TestNG**: A testing framework to run tests and manage test configurations.
 - **Error handling**: a mechanism for better exception and assertion management
 - **Allure Reports** for generating detailed and accessible test reports
-
+---
 ## Prerequisites
 - **Java** (JDK 11 or higher)
 - **TestNG** (Test framework)
@@ -40,6 +40,7 @@ sudo apt-add-repository ppa:qameta/allure
 sudo apt update
 sudo apt install allure
 ```
+---
 
 ## Setup Instructions
 
@@ -49,13 +50,15 @@ sudo apt install allure
 git clone https://github.com/michaelwaheb/APITestAutomation.git
 cd APITestAutomation
 ```
-2. Open in IDE:
+
+2- Open in IDE:
    - Import the project as a Maven project in your IDE.
 
 3-Install Dependencies:
 ```sh
 mvn clean install
 ```
+---
 
 ## Running the Tests
 
@@ -68,5 +71,8 @@ mvn test
 
 The project is configured to automatically generate Allure reports after running the tests. You don't need to manually run any additional commands for report generation. Once the tests are executed using Maven, the Allure report is available within the project directory.
 
-To view the generated report, simply run the following command:
+
+
+
+
 
