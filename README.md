@@ -4,7 +4,7 @@
 This project is an API test automation framework built using **Java, TestNG, and Rest Assured**. It is designed to validate API responses, handle errors, and generate test reports efficiently.
 
 ## Features
-- **Rest Assured**: For automating API
+- **Rest Assured**: For automating API requests
 - **TestNG**: A testing framework to run tests and manage test configurations.
 - **Error handling**: a mechanism for better exception and assertion management
 - **Allure Reports** for generating detailed and accessible test reports
