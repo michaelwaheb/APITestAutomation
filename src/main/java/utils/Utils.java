@@ -22,10 +22,10 @@ public class Utils {
 
 
     // Method to load data from Json file
-    public static JsonNode loadJsonData() {
+    public static JsonNode loadJsonData(String JsonFilepath) {
         queryParamsNode = null;
         try {
-            queryParamsNode = objectMapper.readTree(new File("src/test/java/Data/Params.json"));
+            queryParamsNode = objectMapper.readTree(new File(JsonFilepath));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,9 +33,9 @@ public class Utils {
     }
 
     // Method to get value using dot notation (e.g., "queryParams.animal_type")
-    public static String getData(String keyPath) {
+    public static String getData(String keyPath,String JsonFilepath) {
         try {
-            JsonNode node = objectMapper.readTree(new File("src/test/java/Data/Params.json"));
+            JsonNode node = objectMapper.readTree(new File(JsonFilepath));
             String[] keys = keyPath.split("\\.");
             for (String key : keys) {
                 if (node != null) {
@@ -49,10 +49,12 @@ public class Utils {
     }
 
     // Method to get all query parameters as a Map
-    public static Map<String, String> getParamsFrom (String Params){
+    public static Map<String, String> getParamsFrom (String Params,String JsonFilepath)
+    {
+
             try {
         Map<String, String> queryParams = new LinkedHashMap<>();
-            queryParamsNode = objectMapper.readTree(new File("src/test/java/Data/Params.json")).get(Params);
+            queryParamsNode = objectMapper.readTree(new File(JsonFilepath)).get(Params);
 
             if (queryParamsNode == null) return queryParams; // Return empty map if no queryParams
 
@@ -66,17 +68,64 @@ public class Utils {
             }
         }
 
+    public static Map<String, Object> getBodyParams(String key,String JsonFilepath) {
+        try {
+            Map<String, Object> map = new LinkedHashMap<>();
+            JsonNode node = objectMapper.readTree(new File(JsonFilepath)).get(key);
+
+            if (node == null || !node.isObject()) return map;
+
+            node.fields().forEachRemaining(entry -> {
+                JsonNode value = entry.getValue();
+                if (value.isInt()) map.put(entry.getKey(), value.asInt());
+                else if (value.isBoolean()) map.put(entry.getKey(), value.asBoolean());
+                else if (value.isDouble()) map.put(entry.getKey(), value.asDouble());
+                else map.put(entry.getKey(), value.asText());
+            });
+
+            return map;
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read Params.json", e);
+        }
+    }
+
+
     // Method to extract and print data from the response
     public static void extractSpecificData(Response response,String Data)
     {
-        // Extract data using JsonPath
         JsonPath jsonPath = response.jsonPath();
-        List<String> TargetData = jsonPath.getList(Data);
 
-        // Print the extracted data
-        System.out.println("Extracted Data: " + TargetData);
-        Allure.step("Check Success Result");
-        Allure.addAttachment("The'" +Data+ "'Extracted Successfully", "The target Data:( "+ TargetData + " ).");
+        Object extracted = jsonPath.get(Data);
+
+        if (extracted instanceof List) {
+            List<?> dataList = (List<?>) extracted;
+            System.out.println("Extracted Data: " + dataList);
+            Allure.step("List of '" + Data + "' extracted successfully");
+            Allure.addAttachment("Extracted List", dataList.toString());
+        } else {
+            String data = String.valueOf(extracted);
+            System.out.println("Extracted Data: " + data);
+            Allure.step("Single '" + Data + "' extracted successfully");
+            Allure.addAttachment("Extracted Value", data);
+        }
+    }
+    // Method to extract and print all data from the response
+    public static void extractAllData(Response response) {
+        try {
+            JsonPath jsonPath = response.jsonPath();
+            Object fullData = jsonPath.get();
+
+            // Print to console
+            System.out.println("🔍 Full JSON Response:\n" + fullData);
+
+            // Attach to Allure
+            Allure.step("Full response extracted successfully");
+            Allure.addAttachment("Full JSON Response", "application/json", fullData.toString());
+        } catch (Exception e) {
+            System.err.println("❌ Failed to extract full data: " + e.getMessage());
+            Allure.step("Failed to extract full data");
+            Allure.addAttachment("Extraction Error", e.getMessage());
+        }
     }
 
     // Method to start and stop the Allure server

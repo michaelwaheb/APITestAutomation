@@ -1,0 +1,21 @@
+{
+  "endpoint": "https://fakerestapi.azurewebsites.net/api/v1/Authors/",
+  "AuthorQueryParams":
+  {
+    "id": "1"
+  },
+  "AddNewAuthorParams":
+{
+  "id": 608,
+  "idBook": 1,
+  "firstName": "michael",
+  "lastName": "waheb"
+},
+  "updateExistAuthorParams":
+  {
+    "id": 1,
+    "idBook": 1,
+    "firstName": "michael",
+    "lastName": "waheb"
+  }
+}

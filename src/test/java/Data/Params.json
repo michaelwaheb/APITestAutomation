@@ -1,7 +1,0 @@
-{
-  "endpoint": "api/users",
-  "queryParams":
-  {
-    "page": "2"
-  }
-}

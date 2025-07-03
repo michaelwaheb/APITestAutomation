@@ -13,7 +13,7 @@ public class ErrorHandler {
     }
 
     // Method to execute the API call and validate the response
-    public static Response executeWithValidation(ApiCall apiCall, int expectedStatusCode, String errorMessage) {
+    public static Response executeWithValidation(ApiCall apiCall, int expectedStatusCode, String errorMessage,boolean checkBody) {
         Response response = null;
 
         try {
@@ -30,9 +30,13 @@ public class ErrorHandler {
             Assert.assertEquals(response.statusCode(), expectedStatusCode,
                     errorMessage + " - Expected status: " + expectedStatusCode + ", but got: " + response.statusCode());
 
-            // Assertion: Ensure that the response body is not empty
-            Assert.assertFalse(response.getBody().asString().isEmpty(),
-                    errorMessage + " - Response body is empty.");
+
+            if (checkBody)
+            {
+                String body = response.getBody().asString().trim();
+                Assert.assertFalse(body.isEmpty(),
+                        errorMessage + " - Response body is empty.");
+            }
 
         } catch (Exception e) {
             System.err.println(errorMessage + " - Exception: " + e.getMessage());

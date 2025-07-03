@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://fakerestapi.azurewebsites.net/api/v1/Books/",
+  "BookQueryParams":
+  {
+    "id": "2"
+  },
+  "AddNewBookParams":
+{
+  "id": 201,
+  "title": "test",
+  "description": "test",
+  "pageCount": 50,
+  "excerpt": "test",
+  "publishDate": "2025-07-01T10:38:18.909Z"
+},
+  "updateExistBookParams":
+  {
+    "id": 2,
+    "title": "test update",
+    "description": "test update",
+    "pageCount": 50,
+    "excerpt": "test update",
+    "publishDate": "2025-07-01T10:38:18.909Z"
+  }
+}
