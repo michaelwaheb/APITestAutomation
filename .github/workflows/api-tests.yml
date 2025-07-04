@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: ☕ Set up Java 17
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'adopt'
@@ -24,7 +24,7 @@ jobs:
       run: mvn clean test
 
     - name: 📦 Upload Allure results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results
         path: target/allure-results
