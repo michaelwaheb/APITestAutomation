@@ -1,13 +1,8 @@
 package tests;
 
-import config.ConfigLoader;
-import io.restassured.RestAssured;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import utils.Utils;
-
 import java.io.IOException;
 
 public class BaseTest
