@@ -2,9 +2,9 @@ name: 🚀 API Test Automation with Allure Report
 
 on:
   push:
-    branches: [ main, BooksAPITestAutomation ]
+    branches: [ BooksAPITestAutomation ]
   pull_request:
-    branches: [ main ]
+    branches: [ BooksAPITestAutomation ]
 
 jobs:
   run-api-tests:
