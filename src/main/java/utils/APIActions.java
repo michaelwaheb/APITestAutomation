@@ -12,7 +12,7 @@ public class APIActions
 {
 
 
-        public static void GetAllData(String url,String JsonFilePath)
+        public static void GetAllData(String url,String JsonFilePath,int expectedStatusCode)
         {
             Allure.step("Add {Params} and {endpoint} to the request");
             // Fetch the endpoint from the json file
@@ -27,7 +27,7 @@ public class APIActions
                                     .then()
                                     .extract()
                                     .response(),
-                    200, "Error during retrieving List Data",true);
+                    expectedStatusCode, "Error during retrieving List Data",true);
 
             // Extract and print the Books from the response
             Allure.step("Extract and print {Data} from the response");
@@ -37,7 +37,7 @@ public class APIActions
         }
 
 
-        public static void GetDatabyID(String url, String id,String JsonFilePath)
+        public static void GetDatabyID(String url, String id,String JsonFilePath,int expectedStatusCode)
         {
             Allure.step("Add {Params} and {endpoint} to the request");
             // Fetch the endpoint from the json file
@@ -56,7 +56,7 @@ public class APIActions
                                     .then()
                                     .extract()
                                     .response(),
-                    200, "Error during retrieving Data Details Data by id", true);
+                    expectedStatusCode, "Error during retrieving Data Details Data by id", true);
 
             // Extract and print the Books from the response
             Allure.step("Extract and print {Data} from the response");
@@ -65,7 +65,7 @@ public class APIActions
         }
 
 
-        public static void AddNewData(String url, String Requestbody,String JsonFilePath)
+        public static void AddNewData(String url, String Requestbody,String JsonFilePath,int expectedStatusCode)
         {
             Allure.step("Add {Params} and {endpoint} to the request");
             // Fetch all query parameters dynamically
@@ -83,7 +83,7 @@ public class APIActions
                                     .then()
                                     .extract()
                                     .response(),
-                    200, "Error during retrieving Details Data by id", true);
+                    expectedStatusCode, "Error during retrieving Details Data by id", true);
 
             // Extract and print the Books from the response
             Allure.step("Extract and print {Data} from the response");
@@ -92,7 +92,7 @@ public class APIActions
         }
 
 
-        public static void UpdateExistingDatabyID(String url,String id, String Requestbody,String JsonFilePath)
+        public static void UpdateExistingDatabyID(String url,String id, String Requestbody,String JsonFilePath,int expectedStatusCode)
         {
             Allure.step("Add {Params} and {endpoint} to the request");
             // Fetch all query parameters dynamically
@@ -114,7 +114,7 @@ public class APIActions
                                     .then()
                                     .extract()
                                     .response(),
-                    200, "Error during retrieving Books Details Data by id", true);
+                    expectedStatusCode, "Error during retrieving Books Details Data by id", true);
 
             // Extract and print the Books from the response
             Allure.step("Extract and print {Data} from the response");
@@ -122,7 +122,7 @@ public class APIActions
 
         }
 
-    public static void DeleteDatabyID(String url, String id,String JsonFilePath)
+    public static void DeleteDatabyID(String url, String id,String JsonFilePath,int expectedStatusCode)
 
     {
         Allure.step("Add {Params} and {endpoint} to the request");
@@ -142,7 +142,7 @@ public class APIActions
                                 .then()
                                 .extract()
                                 .response(),
-                200, "Error during Deleting Details Data by id", false);
+                expectedStatusCode, "Error during Deleting Details Data by id", false);
 
         // Extract and print the Books from the response
         Allure.step("Extract and print {Data} from the response");

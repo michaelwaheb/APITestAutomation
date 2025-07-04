@@ -3,6 +3,7 @@
   "BookQueryParams":
   {
     "id": "2"
+
   },
   "AddNewBookParams":
 {
@@ -21,5 +22,50 @@
     "pageCount": 50,
     "excerpt": "test update",
     "publishDate": "2025-07-01T10:38:18.909Z"
+  },
+  "BookParamsEdge":
+  {
+    "id": "300",
+    "title": "test",
+    "subtitle": "test2",
+    "description": "test",
+    "pageCount": 50,
+    "excerpt": "test",
+    "publishDate": "2025-07-01T10:38:18.909Z"
+  },
+  "BookParamsEdge2":
+  {
+    "id": "a",
+    "title": "test",
+    "description": "test",
+    "pageCount": 50,
+    "excerpt": "test",
+    "publishDate": "2025-07-01T10:38:18.909Z"
+  },
+  "BookParamsEdge3":
+  {
+    "id": "-1",
+    "title": "test",
+    "description": "test",
+    "pageCount": 50,
+    "excerpt": "test",
+    "publishDate": "2025-07-01T10:38:18.909Z"
+  },
+  "BookParamsEdge4":
+  {
+    "id": "",
+    "title": "",
+    "description": "",
+    "pageCount": -1,
+    "excerpt": "",
+    "publishDate": "2025-07-01T10:38:18.909Z"
+  },
+  "BookParamsEdge5": {
+    "id": 200,
+    "title": "Book 200",
+    "description": "Lorem lorem lorem. Lorem lorem lorem. Lorem lorem lorem.\n",
+    "pageCount": 20000,
+    "excerpt": "Lorem lorem lorem. Lorem lorem lorem. Lorem lorem lorem.\nLorem lorem lorem. Lorem lorem lorem. Lorem lorem lorem.\nLorem lorem lorem. Lorem lorem lorem. Lorem lorem lorem.\nLorem lorem lorem. Lorem lorem lorem. Lorem lorem lorem.\nLorem lorem lorem. Lorem lorem lorem. Lorem lorem lorem.\n",
+    "publishDate": "2024-12-16T07:18:51.5973144+00:00"
   }
 }

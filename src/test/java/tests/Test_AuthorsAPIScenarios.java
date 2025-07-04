@@ -11,7 +11,7 @@ public class Test_AuthorsAPIScenarios extends BaseTest {
 @Story("Retrieve a list of all authors")
     public void GetAllAuthorList()
     {
-        utils.APIActions.GetAllData("endpoint",JsonFilePath);
+        utils.APIActions.GetAllData("endpoint",JsonFilePath,200);
 
     }
 
@@ -19,7 +19,7 @@ public class Test_AuthorsAPIScenarios extends BaseTest {
     @Story("Retrieve details of a specific author by their ID.")
     public void GetAuthorDetailsbyID()
     {
-        utils.APIActions.GetDatabyID("endpoint","AuthorQueryParams.id",JsonFilePath);
+        utils.APIActions.GetDatabyID("endpoint","AuthorQueryParams.id",JsonFilePath,200);
 
     }
 
@@ -27,7 +27,7 @@ public class Test_AuthorsAPIScenarios extends BaseTest {
     @Story("Add a new author to the system.")
     public void AddNewAuthor()
     {
-        utils.APIActions.AddNewData("endpoint","AddNewAuthorParams",JsonFilePath);
+        utils.APIActions.AddNewData("endpoint","AddNewAuthorParams",JsonFilePath,200);
 
     }
 
@@ -35,7 +35,7 @@ public class Test_AuthorsAPIScenarios extends BaseTest {
     @Story("Update an existing author’s details.")
     public void UpdateExistingAuthorbyID()
     {
-        utils.APIActions.UpdateExistingDatabyID("endpoint","updateExistAuthorParams.id","updateExistAuthorParams",JsonFilePath);
+        utils.APIActions.UpdateExistingDatabyID("endpoint","updateExistAuthorParams.id","updateExistAuthorParams",JsonFilePath,200);
 
     }
 
@@ -43,7 +43,7 @@ public class Test_AuthorsAPIScenarios extends BaseTest {
     @Story("Delete an author by their ID.")
     public void DeleteExistingAuthorbyID()
     {
-        utils.APIActions.DeleteDatabyID("endpoint","AuthorQueryParams.id",JsonFilePath);
+        utils.APIActions.DeleteDatabyID("endpoint","AuthorQueryParams.id",JsonFilePath,200);
 
     }
 

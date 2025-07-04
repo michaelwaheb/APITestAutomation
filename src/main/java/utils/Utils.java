@@ -115,17 +115,39 @@ public class Utils {
             JsonPath jsonPath = response.jsonPath();
             Object fullData = jsonPath.get();
 
+            // Get HTTP status information
+            int statusCode = response.getStatusCode();
+            String statusLine = response.getStatusLine();
+
             // Print to console
+            System.out.println("✅ HTTP Status: " + statusCode + " - " + statusLine);
             System.out.println("🔍 Full JSON Response:\n" + fullData);
 
             // Attach to Allure
-            Allure.step("Full response extracted successfully");
-            Allure.addAttachment("Full JSON Response", "application/json", fullData.toString());
+            Allure.step("✅ Status and response body extracted successfully");
+            Allure.addAttachment("📨 HTTP Status", statusCode + " - " + statusLine);
+            Allure.addAttachment("📦 Full JSON Response", "application/json", fullData.toString());
+
         } catch (Exception e) {
             System.err.println("❌ Failed to extract full data: " + e.getMessage());
-            Allure.step("Failed to extract full data");
+            Allure.step("❌ Failed to extract full data");
             Allure.addAttachment("Extraction Error", e.getMessage());
         }
+//        try {
+//            JsonPath jsonPath = response.jsonPath();
+//            Object fullData = jsonPath.get();
+//
+//            // Print to console
+//            System.out.println("🔍 Full JSON Response:\n" + fullData);
+//
+//            // Attach to Allure
+//            Allure.step("Full response extracted successfully");
+//            Allure.addAttachment("Full JSON Response", "application/json", fullData.toString());
+//        } catch (Exception e) {
+//            System.err.println("❌ Failed to extract full data: " + e.getMessage());
+//            Allure.step("Failed to extract full data");
+//            Allure.addAttachment("Extraction Error", e.getMessage());
+//        }
     }
 
     // Method to start and stop the Allure server
