@@ -22,14 +22,14 @@ public class BaseTest
     @AfterSuite
     public void TearDown() {
 
-//Start then stop Allure serve after test finish
-        try {
-            Utils.startAndStopAllureServe();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+////Start then stop Allure serve after test finish (Remove comment if you are running Project locally)
+//        try {
+//            Utils.startAndStopAllureServe();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 
     }
 }
